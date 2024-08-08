@@ -1,19 +1,19 @@
 
 // You should implement your task here.
+function towelSort(matrix) {
+  if (!matrix?.length) return []
 
-module.exports = function towelSort (matrix) {
-  if (matrix === undefined) {
-    return []
-  } else {
-    let newMatrix = [];
-    for (let i = 0; i < matrix.length; i++) {
-      if (i % 2 !== 0) {
-        matrix[i].reverse();
+  let res = []
+
+  matrix.forEach((subArr, idx) => {
+    if (idx % 2) {
+      res = [...res, subArr.reverse()]
+    } else {
+      res = [...res, subArr]
     }
-    for (let j = 0; j < matrix[i].length; j++){
-      newMatrix.push(matrix[i][j])
-    }
-  }
-  return newMatrix;
-  }
+  })
+
+  return res.flat()
 }
+
+module.exports = towelSort
